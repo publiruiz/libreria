@@ -1,4 +1,4 @@
-package persistencia.entity;
+package com.libreria.libreria.persistencia.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,6 +17,8 @@ import javax.persistence.*;
 public class Item {
 
     @EmbeddedId
-    private long id;
+    private ItemPK id;
+
+    private Boolean status;
     //Clase Item ; id, book, library,user, status(T,F)
 }

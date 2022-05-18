@@ -1,4 +1,4 @@
-package persistencia.entity;
+package com.libreria.libreria.persistencia.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name= "user")
@@ -25,6 +26,11 @@ public class User {
     @Column(name = "telephone")
     private String telefono;
     @Column(name = "age")
-    private Integer edad;
+    private String edad;
+    @Column(name = "county")
+    private String provincia;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Book> books;
 
 }

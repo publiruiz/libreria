@@ -1,10 +1,10 @@
-package service;
+package com.libreria.libreria.service;
 
+import com.libreria.libreria.persistencia.entity.User;
+import com.libreria.libreria.persistencia.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import persistencia.entity.User;
-import persistencia.repository.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,17 +22,20 @@ public class UserService {
 
     @Transactional
     public Optional<User> getUserById(Integer id){
+        System.out.println("entra en service");
         return userRepository.getUserById(id);
     }
 
     @Transactional
-    public User insertUser(User user){
-        return userRepository.insertUser(user);
+    public void insertUser(User user){
+         userRepository.insertUser(user);
     }
 
     @Transactional
-    public User deleteUser(Integer id){
-        return userRepository.delete(id);
+    public void deleteUser(Integer id){
+        System.out.println("Ha llegado al service");
+         userRepository.delete(id);
+
     }
 
 
