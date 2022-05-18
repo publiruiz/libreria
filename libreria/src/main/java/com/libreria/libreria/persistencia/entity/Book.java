@@ -19,7 +19,7 @@ import javax.persistence.Table;
 public class Book {
 
     @Id
-    private long id;
+    private Integer id;
     @Column(name = "title")
     private String titulo;
     @Column(name = "author")

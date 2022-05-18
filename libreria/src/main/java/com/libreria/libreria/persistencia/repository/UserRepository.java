@@ -12,23 +12,24 @@ import java.util.Optional;
 public interface UserRepository {
 
     @Select("SELECT * FROM user")
+    @ResultMap("user")
     public List<User> getAllUser();
 
     @Insert("INSERT INTO user(id,name,surname,telephone,age) VALUES (#{id},#{name},#{surname},#{telephone},#{age})")
     public User insertUser(User user);
 
     @Delete("DELETE user WHERE id = #{id}")
-    public User delete(long id);
+    public User delete(Integer id);
 
     @Select("SELECT * FROM user WHERE id = #{id}")
     @Results(id = "user", value = {
-            @Result(id=true ,property = "id", column = "id"),
+            @Result(property = "id", column = "id"),
             @Result(property = "name", column = "name"),
             @Result(property = "surname", column = "surname"),
             @Result(property = "telephone", column = "telephone"),
             @Result(property = "age" , column = "age")
     })
-    public Optional<User> getUserById(long id);
+    public Optional<User> getUserById(Integer id);
 
     @Update(" UPDATE user WHERE id = #{id} SET telephone = #{telephone}")
     public User changeTelefone(User user);

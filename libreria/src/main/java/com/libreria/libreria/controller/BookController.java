@@ -1,6 +1,7 @@
 package controller;
 
 import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,17 +20,22 @@ public class BookController {
     BookService bookService;
 
     @GetMapping("/all")
-    public List<Book> getAllBook(){
+    public List<Book> getAllBook() {
         return bookService.getAllBook();
     }
+
     @GetMapping("/{id}")
-    public Optional<Book> getBookById(long id){
+    public Optional<Book> getBookById(Integer id) {
         return bookService.getBookById(id);
     }
+
     @Delete("/{id}")
-    public Book deleteBook(long id){
+    public Book deleteBook(Integer id) {
         return bookService.deleteBook(id);
     }
 
-
+    @Insert("/new")
+    public Book insertBook(Book book) {
+        return bookService.insertBook(book);
+    }
 }

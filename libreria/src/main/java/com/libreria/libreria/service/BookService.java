@@ -21,7 +21,7 @@ public class BookService {
     }
 
     @Transactional
-    public Optional<Book> getBookById(long id){
+    public Optional<Book> getBookById(Integer id){
         return bookRepository.getBookById(id);
     }
     @Transactional
@@ -29,7 +29,7 @@ public class BookService {
         return bookRepository.insertBook(book);
     }
     @Transactional
-    public Book deleteBook(long id){
+    public Book deleteBook(Integer id){
         return bookRepository.deleteBookById(id);
     }
 }

@@ -17,7 +17,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Integer id;
     @Column(name = "name")
     private String nombre;
     @Column(name = "surname")
@@ -25,6 +25,6 @@ public class User {
     @Column(name = "telephone")
     private String telefono;
     @Column(name = "age")
-    private long edad;
+    private Integer edad;
 
 }

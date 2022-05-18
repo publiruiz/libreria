@@ -21,7 +21,7 @@ public class UserService {
     }
 
     @Transactional
-    public Optional<User> getUserById(long id){
+    public Optional<User> getUserById(Integer id){
         return userRepository.getUserById(id);
     }
 
@@ -31,7 +31,7 @@ public class UserService {
     }
 
     @Transactional
-    public User deleteUser(long id){
+    public User deleteUser(Integer id){
         return userRepository.delete(id);
     }
 

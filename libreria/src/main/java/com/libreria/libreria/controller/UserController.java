@@ -10,7 +10,7 @@ import service.UserService;
 import java.util.List;
 import java.util.Optional;
 
-@RestController()
+@RestController
 @RequestMapping(value = "user")
 public class UserController {
 
@@ -26,7 +26,7 @@ public class UserController {
         }
     }
     @GetMapping("/{id}")
-    public Optional<User> getUserById(@PathVariable("id")long id){
+    public Optional<User> getUserById(@PathVariable("id")Integer id){
         try{
             return userService.getUserById(id);
         }catch (Exception e){
@@ -35,7 +35,7 @@ public class UserController {
     }
     @DeleteMapping("/{id}")
     public User deleteUser( @PathVariable("id")
-                                        long id){
+                                        Integer id){
         return userService.deleteUser(id);
     }
 
