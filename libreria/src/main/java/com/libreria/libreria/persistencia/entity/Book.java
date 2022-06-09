@@ -17,17 +17,14 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     @Column(name = "title")
     private String titulo;
     @Column(name = "author")
     private String autor;
     @Column(name = "type")
-    private String genero;
+    private TypeEnum genero;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", insertable = false,updatable = false)
-    private User usuario;
 
 
 }

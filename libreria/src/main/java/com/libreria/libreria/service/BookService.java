@@ -26,11 +26,20 @@ public class BookService {
     }
 
     @Transactional
-    public void insertBook(Book book){
-         bookRepository.insertBook(book);
+    public void insertBook(Book book){ bookRepository.insertBook(book);
     }
     @Transactional
     public Book deleteBook(Long id){
         return bookRepository.deleteBookById(id);
+    }
+
+    @Transactional
+    public List<Book> getBookByTitle(String title){
+        System.out.println("entra en service ");
+        return bookRepository.getBooksByTitle(title);}
+
+    @Transactional
+    public List<Book> getBookByType(String type){
+        return bookRepository.getBookByType(type);
     }
 }

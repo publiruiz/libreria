@@ -17,6 +17,8 @@ public class UserService {
 
     @Transactional
     public List<User> getAllUser(){
+        System.out.println("entra en service");
+
         return userRepository.getAllUser();
     }
 

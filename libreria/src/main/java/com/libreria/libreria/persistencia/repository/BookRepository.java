@@ -13,7 +13,7 @@ public interface BookRepository {
 
     @Select("SELECT * FROM book")
     @ResultMap("book")
-    public List<Book> getAllBook();
+     List<Book> getAllBook();
 
     @Select("SELECT * FROM book WHERE id = #{id}")
     @Results(id = "book", value = {
@@ -22,16 +22,23 @@ public interface BookRepository {
             @Result(property = "autor", column = "author"),
             @Result(property = "genero", column = "type")
     })
-    public Optional<Book> getBookById(Integer id);
+     Optional<Book> getBookById(Integer id);
 
     @Insert("INSERT INTO book(id,title,author,type) VALUES (#{id},#{titulo},#{autor},#{genero})")
-    public void insertBook(Book book);
+     void insertBook(Book book);
 
 
     @Delete("DELETE FROM book WHERE id = #{id}")
     Book deleteBookById(Long id);
 
-    /*@Delete("delete from t_author where id = #{id}")
-    int delete(Long id);*/
+
+    @Select("SELECT * FROM book WHERE title LIKE CONCAT('%', #{titulo}, '%') ")
+    @ResultMap("book")
+    List <Book> getBooksByTitle(String title);
+
+    @Select("SELECT * FROM book WHERE type = #{genero}")
+    @ResultMap("book")
+    List<Book> getBookByType(String type);
+
 
 }

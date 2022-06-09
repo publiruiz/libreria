@@ -16,6 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 public class User {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -28,9 +29,9 @@ public class User {
     @Column(name = "age")
     private String edad;
     @Column(name = "county")
-    private String provincia;
+    private EnumCounty.County provincia;
+    @Column(name = "password")
+    private String contrasena;
 
-    @OneToMany(mappedBy = "usuario")
-    private List<Book> books;
 
 }

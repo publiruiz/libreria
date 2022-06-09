@@ -21,8 +21,11 @@ public class UserController {
     @GetMapping("/all")
     public List<User> getAllUser(){
         try{
+            System.out.println("entra en controller");
+
             return userService.getAllUser();
         }catch (Exception e){
+            System.out.println(e.getMessage());
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
@@ -33,7 +36,8 @@ public class UserController {
             return userService.getUserById(id);
         }catch (Exception e){
             System.out.println(e.getMessage());
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                    e.getMessage());
         }
     }
     @DeleteMapping("/{id}")
@@ -46,12 +50,7 @@ public class UserController {
             System.out.println(e.getMessage());
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
-    }/*
-    @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public void create( @RequestBody User user) {
-        userService.insertUser(user);
-
-    }*/
+    }
 
     @PostMapping("/new")
     public void addUser(@RequestBody User user){
@@ -60,6 +59,16 @@ public class UserController {
         }catch (Exception e){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
+    }
+    @PostMapping("/{id}/books")
+    public void addBooksForIdUser(@PathVariable("id")Integer id,Book book){
+        try{
+           book.getId();
+
+        }catch (Exception e){
+
+        }
+
     }
 
 

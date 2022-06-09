@@ -13,14 +13,14 @@ public interface UserRepository {
 
     @Select("SELECT * FROM user")
     @ResultMap("user")
-    public List<User> getAllUser();
+    List<User> getAllUser();
 
-    @Insert("INSERT INTO user(id,name,surname,telephone,age,county) " +
-            "VALUES (#{id},#{nombre},#{apellidos},#{telefono},#{edad},#{provincia})")
-    public void insertUser(User user);
+    @Insert("INSERT INTO user(id,name,surname,telephone,age,county,password) " +
+            "VALUES (#{id},#{nombre},#{apellidos},#{telefono},#{edad},#{provincia},#{contrasena})")
+    void insertUser(User user);
 
     @Delete("DELETE FROM user WHERE id = #{id}")
-    public void delete(Integer id);
+    void delete(Integer id);
 
     @Select("SELECT * FROM user WHERE id = #{id}")
     @Results(id = "user", value = {
@@ -29,10 +29,11 @@ public interface UserRepository {
             @Result(property = "apellidos", column = "surname"),
             @Result(property = "telefono", column = "telephone"),
             @Result(property = "edad" , column = "age"),
-            @Result(property = "provincia", column = "county")
+            @Result(property = "provincia", column = "county"),
+            @Result(property = "contrasena",column = "password")
     })
-    public Optional<User> getUserById(Integer id);
+     Optional<User> getUserById(Integer id);
 
-    @Update("UPDATE user WHERE id = #{id} SET telephone = #{telephone}")
-    public User changeTelefone(User user);
+    @Update("UPDATE user WHERE id = #{id} SET telephone, = #{telephone}")
+     User changeTelefone(User user);
 }

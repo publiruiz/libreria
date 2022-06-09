@@ -16,9 +16,16 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Item {
 
-    @EmbeddedId
-    private ItemPK id;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @Column(name = "id_book")
+    private Integer idBook;
+    @Column(name = "id_user")
+    private Integer idUser;
+    @Column(name = "status")
     private Boolean status;
-    //Clase Item ; id, book, library,user, status(T,F)
+
+
+
 }
